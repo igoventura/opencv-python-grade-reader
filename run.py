@@ -83,9 +83,9 @@ if biggestContour is not None:
 if biggestContour is not None:
 	if answers != -1:
 		cv2.drawContours(image, [biggestContour], -1, (0, 255, 0), 3)
-		print answers
+		print(answers)
 		if codes is not None:
-			print codes
+			print(codes)
 	else:
 		cv2.drawContours(image, [biggestContour], -1, (0, 0, 255), 3)
 
