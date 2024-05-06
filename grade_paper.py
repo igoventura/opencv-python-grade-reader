@@ -19,7 +19,7 @@ columns = [[72.0 / scaling[0], 33 / scaling[1]], [422.0 / scaling[0], 33 / scali
 radius = 10.0 / scaling[0] #radius of the bubbles
 spacing = [35.0 / scaling[0], 32.0 / scaling[1]] #spacing of the rows and columns
 
-def ProcessPage(paper):
+def ProcessPage(paper: cv2.typing.MatLike):
     answers = [] #contains answers
     gray_paper = cv2.cvtColor(paper, cv2.COLOR_BGR2GRAY) #convert image to grayscale
     codes = zbarlight.scan_codes('qrcode', Image.fromarray(np.uint8(gray_paper))) #look for QR code
@@ -81,7 +81,7 @@ def ProcessPage(paper):
 
     #draw the name if found from the QR code
     if codes is not None:
-        cv2.putText(paper, codes[0], (int(0.28*dimensions[0]), int(0.125*dimensions[1])), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 0), 1)
+        cv2.putText(paper, codes[0].decode("utf-8"), (int(0.28*dimensions[0]), int(0.125*dimensions[1])), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 0), 1)
     else:
         codes = [-1]
     return answers, paper, codes

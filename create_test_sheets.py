@@ -30,4 +30,4 @@ x1, x2 = x_offset, x_offset + qr_img.shape[1]
 sheet[y1:y2, x1:x2] = qr_img * 255
 
 #write the image file
-cv2.imwrite(str(name[:-1]) + ".png", sheet)
+cv2.imwrite(str(name) + ".png", sheet)

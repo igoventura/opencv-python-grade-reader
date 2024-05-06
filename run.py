@@ -25,7 +25,7 @@ gray = cv2.bilateralFilter(gray, 11, 17, 17)
 edged = cv2.Canny(gray, 250, 300)
 
 #find the contours
-temp_img, contours, _ = cv2.findContours(edged.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+contours, _ = cv2.findContours(edged.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
 #sort the contours
 contours = sorted(contours, key=cv2.contourArea, reverse=True)[:10]
